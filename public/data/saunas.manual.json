@@ -16,7 +16,7 @@
       "latitude": 59.7465494,
       "longitude": 8.169888,
       "webpageUrlNo": "https://visitrauland.com/rauland-skisenter/aktiviteter/badstuer/",
-      "webpageUrlEn": "https://www.visitnorway.com/listings/saunas-at-vierli/220164/"
+      "webpageUrlEn": "https://visitrauland.com/rauland-skisenter/aktiviteter/badstuer/"
     },
     {
       "uuid": "e55eb063-62c3-4dcb-9f1b-a6d380cefc4a",
@@ -44,6 +44,159 @@
       "longitude": 10.3834994,
       "webpageUrlNo": "https://www.brisbadstu.no/",
       "webpageUrlEn": "https://www.brisbadstu.no/"
+    },
+    {
+      "uuid": "0e5bb308-4c9a-49b0-ae85-143a0e2a2b15",
+      "name": "DNT Sota Sæter",
+      "address": "Sotvegen 1279, 2693 Nordberg, Norge",
+      "latitude": 61.809204599999994,
+      "longitude": 7.710264899999999,
+      "webpageUrlNo": "https://www.dnt.no/hytter/betjente/sota-sater/",
+      "webpageUrlEn": "https://www.dnt.no/hytter/betjente/sota-sater/english/"
+    },
+    {
+      "uuid": "cae333c0-76fc-4ab3-8a79-c2449987f5d2",
+      "name": "DNT Haukeliseter fjellstue",
+      "address": "Haukelivegen 2917, 3895 Edland, Norge",
+      "latitude": 59.8237931,
+      "longitude": 7.1942053,
+      "webpageUrlNo": "https://www.dnt.no/hytter/betjente/haukeliseter/",
+      "webpageUrlEn": "https://www.dnt.no/hytter/betjente/haukeliseter/english/"
+    },
+    {
+      "uuid": "48a4e660-d782-410f-b757-eddefdf7fc5b",
+      "name": "DNT Gjendesheim",
+      "address": "Gjendevegen 200, 2683 Tessanden, Norge",
+      "latitude": 61.4943361,
+      "longitude": 8.8125982,
+      "webpageUrlNo": "https://www.dnt.no/hytter/betjente/gjendesheim/besseggen-sauna/",
+      "webpageUrlEn": "https://www.dnt.no/hytter/betjente/gjendesheim/besseggen-sauna/"
+    },
+    {
+      "uuid": "c06e8549-8092-4106-ab88-1676e1080ae5",
+      "name": "DNT Snøheim",
+      "address": "Snøheimvegen 1474, 2661 Dombås, Norge",
+      "latitude": 62.29456069999999,
+      "longitude": 9.3509149,
+      "webpageUrlNo": "https://www.dnt.no/hytter/betjente/snoheim/om-hytta/",
+      "webpageUrlEn": "https://www.dnt.no/hytter/betjente/snoheim/om-hytta/"
+    },
+    {
+      "uuid": "f5d48902-c9c7-4a5d-a154-69f57bce83b9",
+      "name": "DNT Kobberhaughytta",
+      "address": "Sakariasveien 345, 0758 Oslo, Norge",
+      "latitude": 60.036205900000006,
+      "longitude": 10.663727,
+      "webpageUrlNo": "https://www.dnt.no/hytter/betjente/kobberhaughytta/artikler/markaspa/",
+      "webpageUrlEn": "https://www.dnt.no/hytter/betjente/kobberhaughytta/artikler/markaspa/"
+    },
+    {
+      "uuid": "5d2c8e0e-7e46-4843-bf5d-c3e72da60ceb",
+      "name": "DNT Breivoll Gård",
+      "address": "Breivollveien 100, 1407 Vinterbro, Norge",
+      "latitude": 59.737891999999995,
+      "longitude": 10.7291353,
+      "webpageUrlNo": "https://www.dnt.no/hytter/betjente/breivoll-gard/badstue-pa-breivoll-gard/",
+      "webpageUrlEn": "https://www.dnt.no/hytter/betjente/breivoll-gard/badstue-pa-breivoll-gard/"
+    },
+    {
+      "uuid": "f7551e1c-6b02-4825-8465-f8239f41ffb2",
+      "name": "DNT Gjevilvasshytta",
+      "address": "7340 Oppdal, Norge",
+      "latitude": 62.69854199999999,
+      "longitude": 9.4200416,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/10966",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/10966"
+    },
+    {
+      "uuid": "61dcc437-3c53-438b-a394-7254e61d97eb",
+      "name": "DNT Jægervasshytta",
+      "address": "9064 Svensby, Norge",
+      "latitude": 69.7205524,
+      "longitude": 19.9246981,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/10972",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/10972"
+    },
+    {
+      "uuid": "f7852e46-23e4-4d5c-8bd1-45e25a368f11",
+      "name": "DNT Nedrefosshytta",
+      "address": "9154 Storslett, Norge",
+      "latitude": 69.3209382,
+      "longitude": 21.9692308,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/10388?type=cabin&value=10388",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/10388?type=cabin&value=10388"
+    },
+    {
+      "uuid": "9e25a014-7c8f-4c6a-8c99-1b56bad56bd5",
+      "name": "DNT Blåvatnhytta",
+      "address": "9446 Grovfjord, Norge",
+      "latitude": 68.5710687,
+      "longitude": 17.012999999999998,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/10133",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/10133"
+    },
+    {
+      "uuid": "e8b74e75-3855-40e4-8414-5d7bf4d3b499",
+      "name": "DNT Bojobeaskihytta",
+      "address": "9537 Alta, Norge",
+      "latitude": 69.7979063,
+      "longitude": 24.183556199999998,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/10652",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/10652"
+    },
+    {
+      "uuid": "a36689a5-7440-4e1f-967f-f8c680b96655",
+      "name": "DNT Skoddeberghytta",
+      "address": "9446 Grov, Norge",
+      "latitude": 68.5636039,
+      "longitude": 17.2332733,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/101366",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/101366"
+    },
+    {
+      "uuid": "ae635e9d-5dbe-47cb-8781-87cf81d7bb01",
+      "name": "DNT Alexander Grieghytten",
+      "address": "Holeberg 11, 5722 Dalekvam, Norge",
+      "latitude": 60.537131499999994,
+      "longitude": 6.0793029999999995,
+      "webpageUrlNo": "https://hyttebestilling.dnt.no/hytte/10823",
+      "webpageUrlEn": "https://hyttebestilling.dnt.no/hytte/10823"
+    },
+    {
+      "uuid": "dd7bf82f-91ea-4ff0-ba0b-08202d6d29e1",
+      "name": "Sauna at Jølstraholmen",
+      "address": "Jølstraholmen, 6847 Vassenden, Norge",
+      "latitude": 61.488313299999994,
+      "longitude": 6.086277399999999,
+      "webpageUrlNo": "https://jolstraholmen.no/aktiviteter_post/badstua/",
+      "webpageUrlEn": "https://jolstraholmen.no/aktiviteter_post/badstua/"
+    },
+    {
+      "uuid": "af33b45c-ee45-4ab4-97ec-22a2b2ee2ec5",
+      "name": "Havet Arena",
+      "address": "Strandveien 104, 7067 Trondheim, Norge",
+      "latitude": 63.4417143,
+      "longitude": 10.4251117,
+      "webpageUrlNo": "https://www.havetarena.no/sauna",
+      "webpageUrlEn": "https://www.havetarena.no/sauna"
+    },
+    {
+      "uuid": "8d3f3e6d-4c8e-4a98-8f1a-cced1b1fe562",
+      "name": "Floating Sauna - Lidasanden",
+      "address": "Veslebygda, 6783 Stryn, Norge",
+      "latitude": 61.94944149999999,
+      "longitude": 6.9495716,
+      "webpageUrlNo": "https://lidasanden.no/floating-sauna/",
+      "webpageUrlEn": "https://lidasanden.no/floating-sauna/"
+    },
+    {
+      "uuid": "909867ab-cb32-439e-a736-049a8a4b7db5",
+      "name": "Fagernes Flytebad",
+      "address": "Straumeveien 164, 5151 Straumsgrend, Norge",
+      "latitude": 60.3241742,
+      "longitude": 5.283372099999999,
+      "webpageUrlNo": "https://www.flytebad.no/",
+      "webpageUrlEn": "https://www.flytebad.no/english-1"
     }
   ],
   "template": {
