@@ -8,6 +8,42 @@
       "longitude": 7.076701885088041,
       "webpageUrlNo": "https://www.eidfjord.kommune.no/_f/p1/iffddf792-a046-4308-93f1-96904c859787/badstovereglar_n.pdf",
       "webpageUrlEn": "https://www.eidfjord.kommune.no/_f/p1/i77539c1c-5e2e-48b3-a7a1-8d497ef28382/badstovereglar_eng.pdf"
+    },
+    {
+      "uuid": "b66a8066-2851-4ca2-a4e7-b274acbbaa0e",
+      "name": "Badstuer på Vierli",
+      "address": "Fv37 23, 3864 Rauland, Norge",
+      "latitude": 59.7465494,
+      "longitude": 8.169888,
+      "webpageUrlNo": "https://visitrauland.com/rauland-skisenter/aktiviteter/badstuer/",
+      "webpageUrlEn": "https://www.visitnorway.com/listings/saunas-at-vierli/220164/"
+    },
+    {
+      "uuid": "e55eb063-62c3-4dcb-9f1b-a6d380cefc4a",
+      "name": "Havfrua Badstue",
+      "address": "Stuttnesvegen 92, 6475 Midsund, Norge",
+      "latitude": 62.67818,
+      "longitude": 6.669592300000001,
+      "webpageUrlNo": "https://gjerdebua.no/havfrua-badstue/",
+      "webpageUrlEn": "https://gjerdebua.no/havfrua-badstue/"
+    },
+    {
+      "uuid": "0adc898e-a7e9-410e-8894-2f0d067e5cf8",
+      "name": "Børgefjellsenteret flytende badstue",
+      "address": "Børgefjellsenterveien 87, 7898 Limingen, Norge",
+      "latitude": 64.888548,
+      "longitude": 13.517476,
+      "webpageUrlNo": "https://borgefjellsenteret.no/vannpark/",
+      "webpageUrlEn": "https://borgefjellsenteret.no/vannpark/"
+    },
+    {
+      "uuid": "68d4b826-4adc-4cf2-820d-87fbc00d07d7",
+      "name": "Bris - flytende badstu",
+      "address": "Kirkeveien 572, 3143 Kjøpmannskjær, Norge",
+      "latitude": 59.1726469,
+      "longitude": 10.3834994,
+      "webpageUrlNo": "https://www.brisbadstu.no/",
+      "webpageUrlEn": "https://www.brisbadstu.no/"
     }
   ],
   "template": {
