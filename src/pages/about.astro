@@ -1,0 +1,20 @@
+---
+const basePath = import.meta.env.BASE_URL;
+const targetPath = `${basePath}om/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0;url=${targetPath}`} />
+    <link rel="canonical" href={targetPath} />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href={targetPath}>{targetPath}</a>.
+    </p>
+  </body>
+</html>

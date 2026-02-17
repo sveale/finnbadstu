@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const mapsApiKey = (import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "").trim();
+const basePath = import.meta.env.BASE_URL;
+const aboutPath = `${basePath}om/`;
+---
+
+<BaseLayout
+  title="finnbadstu"
+  titleKey="title.home"
+  description="finnbadstu helps you find sauna and badstu in Norway on a fast, map-first page."
+  keywords="sauna,badstu,badstu norge,finnbadstu,sauna norge"
+>
+  <main class="map-app" data-app-root data-google-maps-key={mapsApiKey}>
+    <h1 class="sr-only" data-i18n="index.hiddenHeading">
+      finnbadstu - find saunas in Norway
+    </h1>
+
+    <div
+      id="map"
+      class="map-canvas"
+      role="region"
+      aria-label="Map with saunas in Norway"
+      data-i18n-aria-label="index.mapAriaLabel"
+    ></div>
+
+    <details class="top-menu">
+      <summary
+        class="top-menu-trigger"
+        aria-label="Menu"
+        data-i18n-aria-label="nav.menu"
+      >
+        <svg
+          class="top-menu-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M4 7h16v2H4V7zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
+        </svg>
+        <span class="sr-only" data-i18n="nav.menu">Menu</span>
+      </summary>
+      <nav class="top-menu-panel" aria-label="Menu">
+        <a class="top-menu-link" href={aboutPath} data-i18n="nav.about">About</a>
+      </nav>
+    </details>
+
+    <button
+      id="search-area-button"
+      type="button"
+      class="search-area-button is-hidden"
+      data-i18n="app.searchArea.button"
+    >
+      Search this area
+    </button>
+
+    <button
+      id="my-location-button"
+      type="button"
+      class="my-location-button"
+      data-i18n-aria-label="app.location.button"
+      data-i18n-title="app.location.button"
+      aria-label="Go to my location"
+    >
+      <svg
+        class="my-location-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm8.94 3h-1.99A7.003 7.003 0 0 0 13 5.05V3.06a1 1 0 1 0-2 0v1.99A7.003 7.003 0 0 0 5.05 11H3.06a1 1 0 1 0 0 2h1.99A7.003 7.003 0 0 0 11 18.95v1.99a1 1 0 1 0 2 0v-1.99A7.003 7.003 0 0 0 18.95 13h1.99a1 1 0 1 0 0-2zM12 17a5 5 0 1 1 0-10a5 5 0 0 1 0 10z"
+        ></path>
+      </svg>
+      <span class="sr-only" data-i18n="app.location.button">Go to my location</span>
+    </button>
+  </main>
+  <script>
+    import "../scripts/app.js";
+  </script>
+</BaseLayout>

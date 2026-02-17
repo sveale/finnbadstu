@@ -1,0 +1,84 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Derive Astro site/base for GitHub Pages
+        run: |
+          if [ -f public/CNAME ]; then
+            CUSTOM_DOMAIN="$(tr -d '\r\n' < public/CNAME)"
+          else
+            CUSTOM_DOMAIN=""
+          fi
+
+          if [ -n "$CUSTOM_DOMAIN" ]; then
+            echo "ASTRO_BASE=/" >> "$GITHUB_ENV"
+            echo "ASTRO_SITE=https://${CUSTOM_DOMAIN}" >> "$GITHUB_ENV"
+          else
+            REPO_NAME="${GITHUB_REPOSITORY#*/}"
+            OWNER="${GITHUB_REPOSITORY_OWNER}"
+
+            if [ "$REPO_NAME" = "${OWNER}.github.io" ]; then
+              echo "ASTRO_BASE=/" >> "$GITHUB_ENV"
+            else
+              echo "ASTRO_BASE=/${REPO_NAME}/" >> "$GITHUB_ENV"
+            fi
+
+            echo "ASTRO_SITE=https://${OWNER}.github.io" >> "$GITHUB_ENV"
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.PUBLIC_GOOGLE_MAPS_API_KEY }}
+
+      - name: Add .nojekyll
+        run: touch dist/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

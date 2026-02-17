@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const homePath = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="About | finnbadstu"
+  titleKey="title.about"
+  description="About finnbadstu: a map service for sauna and badstu in Norway."
+  keywords="om finnbadstu,sauna,badstu,badstu norge"
+>
+  <main class="info-page">
+    <article class="info-card">
+      <h1 data-i18n="about.heading">About finnbadstu</h1>
+      <p data-i18n="about.p1">
+        finnbadstu helps you find sauna locations in Norway using map data and nearby search.
+      </p>
+      <p data-i18n="about.p2">
+        The goal is a fast and simple experience for keywords like sauna, badstu, and
+        badstu norge.
+      </p>
+      <p>
+        <span data-i18n="contact.p1">
+          For suggestions, missing sauna locations, or general feedback, please contact us by email:
+        </span>
+        <a class="inline-mail-link" href="mailto:admin@finnbadstu.no">admin@finnbadstu.no</a>
+      </p>
+      <a class="back-link" href={homePath} data-i18n="about.back">Back to map</a>
+    </article>
+  </main>
+</BaseLayout>

@@ -1,0 +1,22 @@
+{
+  "saunas": [
+    {
+      "uuid": "15284bed-0368-4bb4-917a-bb6239869d85",
+      "name": "Kråkebu badstova - Eidfjord",
+      "address": "5783 Eidfjord, Norge",
+      "latitude": 60.47335649650913,
+      "longitude": 7.076701885088041,
+      "webpageUrlNo": "https://www.eidfjord.kommune.no/_f/p1/iffddf792-a046-4308-93f1-96904c859787/badstovereglar_n.pdf",
+      "webpageUrlEn": "https://www.eidfjord.kommune.no/_f/p1/i77539c1c-5e2e-48b3-a7a1-8d497ef28382/badstovereglar_eng.pdf"
+    }
+  ],
+  "template": {
+    "uuid": "manual-sauna-001",
+    "name": "Example Sauna",
+    "address": "Example street 1, 0123 Oslo, Norge",
+    "latitude": 60.39126,
+    "longitude": 5.32205,
+    "webpageUrlNo": "https://example.no/badstu",
+    "webpageUrlEn": "https://example.no/en/sauna"
+  }
+}
