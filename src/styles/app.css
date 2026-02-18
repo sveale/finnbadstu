@@ -55,7 +55,7 @@ body {
 .top-menu {
   position: absolute;
   top: 0.82rem;
-  left: 0.82rem;
+  right: 0.82rem;
   z-index: 8;
 }
 
@@ -317,7 +317,7 @@ body {
 @media (max-width: 700px) {
   .top-menu {
     top: 0.58rem;
-    left: 0.5rem;
+    right: 0.5rem;
   }
 
   .search-area-button {

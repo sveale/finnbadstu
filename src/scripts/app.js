@@ -10,12 +10,39 @@ const VIEWPORT_KM_NO_LOCATION = 100;
 const LIVE_TEXT_QUERIES = ["sauna", "badstu"];
 const MANUAL_SAUNA_DATA_PATH = `${import.meta.env.BASE_URL}data/saunas.manual.json`;
 const MANUAL_LIVE_MERGE_DISTANCE_METERS = 100;
+const MAP_THEME_STYLES = [
+  { elementType: "geometry", stylers: [{ color: "#eef4f7" }] },
+  { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#466171" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#f8fbfd" }] },
+  {
+    featureType: "administrative",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#c4d2da" }]
+  },
+  { featureType: "poi", elementType: "geometry", stylers: [{ visibility: "off" }] },
+  { featureType: "poi", elementType: "labels.text.fill", stylers: [{ color: "#466171" }] },
+  { featureType: "poi", elementType: "labels.text.stroke", stylers: [{ color: "#f8fbfd" }] },
+  { featureType: "road", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+  { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#d4dfe5" }] },
+  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#f4efde" }] },
+  { featureType: "transit", stylers: [{ visibility: "off" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#b8dbe9" }] },
+  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#3b6678" }] }
+];
+const SAUNA_MARKER_SIZE = Object.freeze({ width: 36, height: 46 });
+const SAUNA_MARKER_ANCHOR = Object.freeze({ x: 18, y: 42 });
+const SAUNA_MARKER_COLORS = Object.freeze({
+  default: "#0b7e74",
+  active: "#f08c2e"
+});
 
 const state = {
   map: null,
   infoWindow: null,
   markerById: new Map(),
   markerSaunaById: new Map(),
+  activeMarkerId: null,
   activeCenter: SOUTHERN_NORWAY_CENTER,
   viewportCenter: SOUTHERN_NORWAY_CENTER,
   viewportKm: VIEWPORT_KM_NO_LOCATION,
@@ -30,6 +57,7 @@ const state = {
 };
 
 let placeClassPromise = null;
+let saunaMarkerIcons = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.querySelector("[data-app-root]");
@@ -58,9 +86,17 @@ async function bootstrap(root) {
       mapTypeControl: false,
       streetViewControl: false,
       fullscreenControl: false,
-      gestureHandling: "cooperative"
+      gestureHandling: "cooperative",
+      styles: MAP_THEME_STYLES
     });
     state.infoWindow = new google.maps.InfoWindow();
+    state.infoWindow.addListener("closeclick", () => {
+      clearActiveMarkerSelection();
+    });
+    state.map.addListener("click", () => {
+      state.infoWindow.close();
+      clearActiveMarkerSelection();
+    });
     attachMapControls(elements);
     wireSearchAreaInteractions(elements);
     setSearchAreaButtonVisible(elements, false);
@@ -206,13 +242,15 @@ function renderMarkers(saunas) {
       marker = new google.maps.Marker({
         position: sauna.location,
         title: sauna.name,
-        optimized: true
+        optimized: true,
+        icon: getSaunaMarkerIcon(sauna.id === state.activeMarkerId ? "active" : "default")
       });
 
       marker.addListener("click", () => {
         const currentSauna = state.markerSaunaById.get(sauna.id);
         if (!currentSauna) return;
 
+        setActiveMarkerSelection(sauna.id);
         openInfoWindowForSauna(currentSauna, marker);
       });
 
@@ -220,6 +258,7 @@ function renderMarkers(saunas) {
     } else {
       marker.setPosition(sauna.location);
       marker.setTitle(sauna.name);
+      marker.setIcon(getSaunaMarkerIcon(sauna.id === state.activeMarkerId ? "active" : "default"));
     }
 
     if (marker.getMap() !== state.map) {
@@ -230,11 +269,67 @@ function renderMarkers(saunas) {
   for (const [saunaId, marker] of state.markerById) {
     if (nextVisibleIds.has(saunaId)) continue;
 
+    if (state.activeMarkerId === saunaId) {
+      state.activeMarkerId = null;
+    }
     marker.setMap(null);
     google.maps.event.clearInstanceListeners(marker);
     state.markerById.delete(saunaId);
     state.markerSaunaById.delete(saunaId);
   }
+}
+
+function getSaunaMarkerIcon(variant = "default") {
+  if (!saunaMarkerIcons) {
+    saunaMarkerIcons = {
+      default: buildSaunaMarkerIcon(SAUNA_MARKER_COLORS.default),
+      active: buildSaunaMarkerIcon(SAUNA_MARKER_COLORS.active)
+    };
+  }
+
+  return saunaMarkerIcons[variant] || saunaMarkerIcons.default;
+}
+
+function buildSaunaMarkerIcon(pinColor) {
+  const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46">
+  <path d="M18 1C10.268 1 4 7.268 4 15c0 10.094 11.668 23.74 13.015 25.29a1.3 1.3 0 0 0 1.97 0C20.332 38.74 32 25.094 32 15 32 7.268 25.732 1 18 1z" fill="${pinColor}" stroke="#ffffff" stroke-width="1.5"/>
+  <circle cx="18" cy="15.2" r="7.3" fill="#ffffff"/>
+  <path d="M15.2 19.7c-.8-.7-1.1-1.7-.8-2.7.2-.7.8-1.4 1.4-1.9M18 20c-.8-.7-1.1-1.8-.8-2.8.2-.7.8-1.4 1.4-1.9M20.8 19.7c-.8-.7-1.1-1.7-.8-2.7.2-.7.8-1.4 1.4-1.9" stroke="${pinColor}" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+</svg>`.trim();
+
+  return {
+    url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`,
+    scaledSize: new google.maps.Size(SAUNA_MARKER_SIZE.width, SAUNA_MARKER_SIZE.height),
+    anchor: new google.maps.Point(SAUNA_MARKER_ANCHOR.x, SAUNA_MARKER_ANCHOR.y)
+  };
+}
+
+function setActiveMarkerSelection(saunaId) {
+  if (!saunaId || saunaId === state.activeMarkerId) return;
+
+  const previousMarker = state.markerById.get(state.activeMarkerId);
+  if (previousMarker) {
+    previousMarker.setIcon(getSaunaMarkerIcon("default"));
+  }
+
+  state.activeMarkerId = saunaId;
+
+  const nextMarker = state.markerById.get(saunaId);
+  if (nextMarker) {
+    nextMarker.setIcon(getSaunaMarkerIcon("active"));
+  }
+}
+
+function clearActiveMarkerSelection() {
+  if (!state.activeMarkerId) return;
+
+  const activeMarker = state.markerById.get(state.activeMarkerId);
+  if (activeMarker) {
+    activeMarker.setIcon(getSaunaMarkerIcon("default"));
+  }
+
+  state.activeMarkerId = null;
 }
 
 function buildInfoWindowHeader(sauna) {
