@@ -86,7 +86,7 @@ async function bootstrap(root) {
       mapTypeControl: false,
       streetViewControl: false,
       fullscreenControl: false,
-      gestureHandling: "cooperative",
+      gestureHandling: "greedy",
       styles: MAP_THEME_STYLES
     });
     state.infoWindow = new google.maps.InfoWindow();
